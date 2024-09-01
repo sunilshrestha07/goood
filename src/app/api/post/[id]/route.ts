@@ -7,15 +7,16 @@ export async function GET(request:Request,{params}:{params:{id:string}}) {
     const {id} = params
     try {
         let post = await Post.findById(id)
-        .populate({ path: 'user', select: 'name '})
+        // .populate({ path: 'user', select: 'name '})
+        // .populate('user')
 
-        if (post.likes && post.likes.length > 0) {
-            post = await Post.populate(post, { path: 'likes.user', select: 'name email' });
-        }
+        // if (post.likes && post.likes.length > 0) {
+        //     // post = await Post.populate(post, { path: 'likes.user', select: 'name email' });
+        // }
 
-        if (post.comments && post.comments.length > 0) {
-            post = await Post.populate(post, { path: 'comments.user', select: 'name image' });
-        }
+        // if (post.comments && post.comments.length > 0) {
+        //     // post = await Post.populate(post, { path: 'comments.user', select: 'name image' });
+        // }
         // .populate({ path: 'likes', select: 'message', populate: { path: 'user', select: 'name email' } })
         // .populate({ path: 'comments', select: 'message', populate: { path: 'user', select: 'name image' } });
         return NextResponse.json({message:"post found",post:post}, {status: 200})

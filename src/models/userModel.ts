@@ -1,5 +1,4 @@
 import mongoose, { Schema } from "mongoose";
-// import {Schema,model,models} from mongoose;
 
 const userSchema = new mongoose.Schema(
   {
@@ -7,26 +6,22 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    username: {
+    name: {
       type: String,
       required: true,
     },
     password: {
       type: String,
       required: true,
-    }
+    },
+    avatar: {
+      type: String,
+    },
   },
   {
     timestamps: true,
   }
 );
-
-userSchema.methods.toSafeObjectWithOnlyUserName = function () {
-  const user = this.toObject();
-  delete user.email;
-  delete user.password;
-  return user;
-};
 
 const User = mongoose.models.User || mongoose.model("User", userSchema);
 

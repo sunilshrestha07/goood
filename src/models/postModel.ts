@@ -1,35 +1,40 @@
 import mongoose from "mongoose";
 
-//creating schema for post
-const postSchema = new mongoose.Schema({
-    content:{
-        type: String,
-        required: true
+// Creating schema for post
+const postSchema = new mongoose.Schema(
+  {
+    content: {
+      type: String,
+      required: true,
     },
-    achievements:[{
+    achievements: [
+      {
         type: String,
-    }],
-    image:{
-        type: String,
+      },
+    ],
+    image: {
+      type: String,
     },
     user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-        required: true
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User", // Reference to the User model
+      required: true,
     },
-    createdAt: {
-        type: Date,
-        default: Date.now
-    },
-    likes: [{
-        type:mongoose.Schema.Types.ObjectId,
-        ref: "Likes"
-    }],
-    comments: [{
+    likes: [
+      {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Comments"
-    }]
-},{timestamps: true});
+        ref: "Likes",
+      },
+    ],
+    comments: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Comments",
+      },
+    ],
+  },
+  { timestamps: true }
+);
 
 const Post = mongoose.models.Post || mongoose.model("Post", postSchema);
-export default Post
+export default Post;

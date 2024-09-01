@@ -30,13 +30,14 @@ export default function Index() {
     console.log(formData);
   };
 
+  // <audio controls className='mt-28' hidden autoPlay loop>
+  //         <source src="/suneel.mp3" type="audio/mpeg" />
+  //       Your browser does not support the audio element.
+  //     </audio>
+
   return (
     <div className="w-full h-screen flex justify-center"
       style={{ backgroundColor: 'rgba(177, 176, 255, 0.34)' }}>
-        <audio controls className='mt-28' hidden autoPlay loop>
-          <source src="/suneel.mp3" type="audio/mpeg" />
-        Your browser does not support the audio element.
-      </audio>
       <div className="w-[80%] bg-white mt-24 rounded-xl flex justify-center py-16 px-20">
         <div className="w-full">
           <div className="font-semibold text-2xl px-5 mb-5">

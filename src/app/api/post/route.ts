@@ -3,11 +3,12 @@ import Post from "@/models/postModel";
 import User from "@/models/userModel";  // Import User model
 import { NextResponse } from "next/server";
 
+
 export async function GET(request: Request) {
     await dbConnect();
     try {
         const post = await Post.find()
-            // .populate({ path: 'user', select: 'name email' }) // Correct path and schema
+            .populate({ path: 'user', select: 'name email' }) // Correct path and schema
             // .populate('comments')
             // .populate({ path: 'comments', select: 'message', populate: { path: 'user', select: 'name email' } })
             // .populate({ path: 'likes', select: 'message', populate: { path: 'user', select: 'name email' } });
